@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Drag and Drop</title>
+        <script>
+            function dragstartHandler (ev){
+                ev.dataTransfer.setData("text", ev.target.id);
+            }
+
+            function dragoverHandler(ev){
+                ev.preventDefault();
+            }
+
+            function dropHandler(ev){
+                ev.preventDefault();
+                const data = ev.dataTransfer.getData("text");
+                ev.target.appendChild(document.getElementById(data));
+            }
+        </script>
+    </head>
+    <body>
+        
+       <div id="div1" ondrop="dropHandler(event)"
+       ondragover = "dragoverHandler(event)"></div> 
+
+       <img id = "img1" src="C:\Users\Bijay Tamang\Downloads\Horror Portrait Tutorial Part One.jpg" draggable = "true" ondragstart="dragstartHandler(event)" alt="image 1" width = "336" height="69">
+    </body>
+</html>
