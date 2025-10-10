@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Canvas</title>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000"></canvas>
+        <script>
+            function clickCounter(){
+                const x = document.getElementById("result");
+                if(typeof(Storage)!== "undefined"){
+                    if(localStorage.clickcount){
+                        localStorage.clickcount = Number(localStorage.clickcount) +1;
+                    } else {
+                        localStorage.clickcount = 1;
+                    }
+                    x.innerHTML = "You have clicked the button" + localStorage.clickcount + "times(s)!";
+                } else {
+                    x.innerHTML = "Sorry, no web storage support!";
+                }
+            }
+        </script>
+    </body>
+</html>
+
+<script>
+    function clickCounter(){
+        const x = document.getElementById("result");
+        if(typeof(Storage) !== "undefined"){
+            if(sessionStorage.clickcount){
+                sessionStorage.clickcount = Number(sessionStorage.clickcount) +1;
+            } else {
+                sessionStorage.clickcount = 1;
+            }
+            x.innerHTML = "You have clicked the button" + sessionStorage.clickcount + "time(s) in this session !";
+        } else {
+            x.innerHTML = "Sorry, no Web storage support !";
+        }
+    }
+</script>
+

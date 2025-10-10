@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+            background: #ffffff url('Cafe\ Menu.html') no-repeat right top" )
+        }
+        div{
+            border-style: solid;
+            border-color: red green blue yellow; 
+        }
+    </style>
+    <body style="background-color: lightblue; background-repeat: no-repeat; background-position: right top; background-attachment: fixed; ">
+        <p>Count number: <output id ="result"></output></p>
+        <button onclick="startWorker()">Start Worker</button>
+        <button onclick="stopWorker()">Stop Worker</button>
+
+        <script>
+            let w;
+            function startWorker(){
+                const x = document.getElementById("result");
+                if(typeof(Worker)!== "undefined"){
+                    if(typeof(w) == "undefined"){
+                        w = new Worker ("demo_worker.js");
+                    }
+                    w.onmessage = function(event){
+                        x.innerHTML = event.data;
+                    };
+                } else{
+                    x.innerHTML = "Sorry! No web worker support.";
+                }
+            }
+
+            function stopWorker(){
+                w.terminate();
+                w = undefined;
+            }
+        </script>
+        <div>this is div</div>
+    </body>
+</html>
